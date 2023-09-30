@@ -17,17 +17,30 @@ int *Sorted_mas(int *a, int *b, int n, int m)
         {
             c[k] = a[i];
             i++;
-            k++;
         }
         
-        else if (a[i] > b[j])
+        else
         {
             c[k] = b[j];
             j++;
-            k++;
         }
+
+	k++;
     }
     
+    while(i < n)
+    {
+        c[k] = a[i];
+        k++;
+        i++;
+    }
+    
+    while(j < m)
+    {
+        c[k] = b[j];
+        k++;
+        j++;
+    }
     return c;
 }
 int main()
