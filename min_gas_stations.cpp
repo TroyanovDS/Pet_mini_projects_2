@@ -4,31 +4,20 @@ using namespace std;
 
 int min_gas_stations(int *a, int n, int fuel)
 {
-    int i = 1;
+    int i = 0;
     int k = 0;
-    int len = 0;
-    while(i < n)
+    int j = 0;
+    while(i < n - 1)
     {
-        if(a[i] - a[i - 1] < fuel)
+        j = i + 1;
+        
+        while ((j < n) && (a[j] - a[i] <= fuel))
         {
-            len += a[i] - a[i - 1];
-            i++;
-            
-            if(len + a[i] - a[i - 1] >= fuel)
-            {
-                k++;
-            }
-            else
-            {
-                i++;
-            }
-        }
-        else if (a[i] - a[i - 1] >= fuel)
-        {
-            k++;
-            i++;
+            j++;
         }
         
+        k++;
+        i = j - 1;
     }
     
     return k;
