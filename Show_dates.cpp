@@ -19,7 +19,7 @@ void show_dates(int day, int month, int year, int days, int *a)
                 month = 1;
                 year++;
                 
-                if (year % 2 == 0)
+                if (year % 4 == 0)
                 {
                     a[1] = 29;
                 }
@@ -54,7 +54,7 @@ int main()
     
     a[0] = 31; a[1] = 28; a[2] = 31; a[3] = 30; a[4] = 31; a[5] = 30; a[6] = 31; a[7] = 31; a[8] = 30; a[9] = 31; a[10] = 30; a[11] = 31;
     
-    if (year % 2 == 0)
+    if (year % 4 == 0)
     {
         a[1] = 29;
     }
