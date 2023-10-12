@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <iostream>
-
+#include <cmath>
 using namespace std;
 
 void sums(int n)
@@ -16,7 +16,7 @@ void sums(int n)
             {
                 break;
             }
-            cout << i << "+" << j << "+" << n - i - j << endl;
+            cout << i << "+" << j << "+" << abs(n - i - j) << endl;
             k++;
             
         }
