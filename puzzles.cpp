@@ -1,52 +1,33 @@
-#include <stdio.h>
 #include <iostream>
-#include <cmath>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-int min_raz(int *a, int n, int students)
+int min_raz(vector<int> a, int n, int students)
 {
-    int k = 0;
-    int i = 0;
-    int max = a[0];
-    int min = a[0];
-    int f = 0, l;
+    int raz = a[students - 1] - a[0];
     int j;
-    while (i < n)
+    int i = 1;
+    while(j < n)
     {
-        j = i + 1;
+        j = students;
         
-        max = a[i];
-        
-        while (j < n)
+        if (a[j] - a[i] < raz)
         {
-            if (a[j] < min)
-            {
-                min = a[j];
-            }
+            raz = a[j] - a[i];
             j++;
-            
-            
+            i++;
         }
-        
-        if (a[i] <= max)
-        {
-            f++;
-        }
-        
-        if (f >= students)
-        {
-            k = abs(max - min);
-        }
-        
-        i++;
     }
-    
-    return k;
+   
+    return raz;
 }
 
 int main()
 {
-    int *a, n, students;
+    vector<int> a;
+    int n, students;
     
     cout << "count of students: ";
     cin >> students;
@@ -54,12 +35,21 @@ int main()
     cout << "count of puzzles: ";
     cin >> n;
     
-    a = new int [n];
+    int b;
     
-    for (int i; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        cin >> b;
+        a.push_back(b);
     }
+    
+    sort(a.begin(), a.end());
+    
+    for (int i = 0; i < n; i++)
+    {
+        cout << a[i] << " ";
+    }
+    cout << endl;
     
     int raz;
     
