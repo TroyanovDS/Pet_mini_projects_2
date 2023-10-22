@@ -7,18 +7,19 @@ using namespace std;
 int min_raz(vector<int> a, int n, int students)
 {
     int raz = a[students - 1] - a[0];
-    int j;
+    int j = students;
     int i = 1;
     while(j < n)
     {
-        j = students;
+        
         
         if (a[j] - a[i] < raz)
         {
             raz = a[j] - a[i];
-            j++;
-            i++;
         }
+	
+	i++;
+	j++;
     }
    
     return raz;
