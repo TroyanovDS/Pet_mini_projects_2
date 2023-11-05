@@ -83,7 +83,8 @@ int main()
         dp[1] = tim[0][1];
     }
 
-    int min_dp2 = min_time(tim[0][0] + tim[1][0] + tim[2][0], tim[0][1] + tim[2][0], tim[0][2]);
+    int min_dp2 = min_time(tim[0][0] + tim[1][0] + tim[2][0], tim[0][1] + tim[2][0], tim[0][0] + tim[1][1]);
+    if (tim[0][2] < min_dp2) min_dp2 = tim[0][2];
 
     dp[2] = min_dp2;
 

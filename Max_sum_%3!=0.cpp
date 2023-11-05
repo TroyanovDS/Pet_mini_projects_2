@@ -13,21 +13,27 @@ using namespace std;
 int sum_max(int **couple, int n)
 {
     int sum = 0;
-    int min = abs(couple[0][0] - couple[0][1]);
-    
+    int min, k;
+
     for (int i = 0; i < n; i++)
+    {
+	if(abs(couple[i][0] - couple[i][1]) % 3 != 0) 
+	{
+	    min = abs(couple[i][0] - couple[i][1]);
+	    k = i;
+	    break;
+	}
+    }
+    
+    for (int i = k; i < n; i++)
     {
         if (couple[i][0] > couple[i][1]) sum += couple[i][0];
         
         else sum += couple[i][1];
-        
-        int min_2 = abs(couple[i][0] - couple[i][1]);
 
-        if (min_2) % 3 != 0)
-        {
-            if (min > min_2) min = min_2;
+        int min_2 = abs(couple[i][0] - couple[i][1]);
+	if ((min_2 % 3 != 0) && (min > min_2)) min = min_2;
             
-        }
     }
     
    
