@@ -13,38 +13,31 @@ using namespace std;
 int sum_max(int **couple, int n)
 {
     int sum = 0;
-    
+    int min = abs(couple[0][0] - couple[0][1]);
     
     for (int i = 0; i < n; i++)
     {
         if (couple[i][0] > couple[i][1]) sum += couple[i][0];
         
         else sum += couple[i][1];
+        
+        int min_2 = abs(couple[i][0] - couple[i][1]);
+
+        if (min_2) % 3 != 0)
+        {
+            if (min > min_2) min = min_2;
+            
+        }
     }
     
    
     
-    if(sum % 3 == 0)
-    {
-        int min = abs(couple[0][0] - couple[0][1]);
-        
-        for (int i = 0; i < n; i++)
-        {
-            if ((abs(couple[i][0] - couple[i][1]) < min) && ((couple[i][0] % 3 == 0) || (couple[i][1] % 3 == 0)))
-            {
-                min = abs(couple[i][0] - couple[i][1]);
-                
-            }
-            
-        }
-        
-        sum -= min;
-    }
+    if(sum % 3 == 0) sum -= min;
+    
     return sum;
 }
 
-// вычислить из суммы, если она делится на 3, 
-//наименьшую разницу, в которой одна из переменных тоже делится на 3
+
 
 int main()
 {
