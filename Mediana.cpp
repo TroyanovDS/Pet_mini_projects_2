@@ -27,14 +27,12 @@ int main()
      if (n % 2 != 0)
      {
          med = arr[(n - 1) / 2];
-         cout << "mediana= " << med << "\n";
      }
      else if (n % 2 == 0) 
      {
-         med = 0.5 * (arr[(n - 1) / 2] + arr[n / 2]);
-         cout << "mediana= " << med << "\n";
+         med = 0.5 * (arr[(n - 2) / 2] + arr[n / 2]);
      }
-     
+     cout << "mediana= " << med << "\n";
 
 
     return 0;
