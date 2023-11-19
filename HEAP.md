@@ -1,32 +1,35 @@
+// 
+//сделать класс кучи (HEAP) и методы, в том числе метод добавления элемента в соответствии со свойствами кучи.
+
 #include <iostream>
 using namespace std;
 
-class HEAP 
+class HEAP
 {
     int n;
-    int *tree;
+    int* tree;
 public:
-    HEAP(int _n, int *b);
+    HEAP(int _n, int* b);
     void OutHeap();
     void push_number(int num);
-    int pop_back();  
+    int pop_back();
     ~HEAP();
 };
 
-HEAP::HEAP (int _n, int *b)
-{ 
-    n = _n; 
-    tree = new int [n];
+HEAP::HEAP(int _n, int* b)
+{
+    n = _n;
+    tree = new int[10*n];
 
-    for (int i = 0; i < n; i++) 
-    { 
+    for (int i = 0; i < n; i++)
+    {
         tree[i] = b[i];
-    } 
+    }
 }
 
-void HEAP::OutHeap() 
+void HEAP::OutHeap()
 {
-    for (int i = 0; i < n; i++) 
+    for (int i = 0; i < n; i++)
     {
         cout << tree[i] << " ";
     }
@@ -37,15 +40,15 @@ HEAP::~HEAP()
     delete[] tree;
 }
 
-void HEAP::push_number(int num) 
-{
+void HEAP::push_number(int num)
+{   
     n++;
     int i = n - 1;
     tree[i] = num;
     int ind = (i - 1) / 2;
     while (ind >= 0 && i > 0)
     {
-        if (tree[i] > tree[ind]) 
+        if (tree[i] < tree[ind])
         {
             int temp = tree[i];
             tree[i] = tree[ind];
@@ -56,7 +59,7 @@ void HEAP::push_number(int num)
     }
 }
 
-int HEAP::pop_back() 
+int HEAP::pop_back()
 {
     int k = tree[n - 1];
     tree[n - 1] = 0;
@@ -72,22 +75,28 @@ int main()
     cout << "n= ";
     cin >> n;
 
-    for (int i = 0; i < n; i++) 
+    b = new int[n];
+
+    for (int i = 0; i < n; i++)
     {
         cin >> b[i];
     }
 
     HEAP a(n, b);
 
-    a.push_number(5);
+    a.push_number(4);
     a.OutHeap();
 
-    cout << "--------------------" << endl;
+    cout << "\n" << "--------------------" << "\n";
 
     int k = a.pop_back();
     cout << k << endl;
 
-    a.~HEAP();
+    a.OutHeap();
 
-
+    delete[] b;
+    return 0;
 }
+
+
+
