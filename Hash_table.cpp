@@ -10,17 +10,17 @@
 using namespace std;
 
 
-class HASH
+class SET
 {
     vector <vector<int>> arr;
 public:
-    HASH();
-    void AddInHash(int num);
+    SET();
+    void AddInSet(int num);
     bool Search(int num);
-    void ShowHash();
+    void ShowSet();
 };
 
-HASH::HASH()
+SET::SET()
 {
     arr.resize(10);
 
@@ -29,7 +29,7 @@ HASH::HASH()
         arr[i].resize(1);
     }
 }
-void HASH::AddInHash(int num)
+void SET::AddInSet(int num)
 {
     int i = num % 10;
     arr[i][arr[i].size() - 1] = num;
@@ -37,20 +37,21 @@ void HASH::AddInHash(int num)
     
 }
 
-bool HASH::Search(int num) 
+bool SET::Search(int num) 
 {
     int i = num % 10;
     int j = 0;
     bool flag = false;
     
-    while (flag || j < arr[i].size())
+    while (flag == false && j < arr[i].size())
     {
         if (arr[i][j] == num) flag = true;
+        j++;
     }
         return flag;
 }
 
-void HASH::ShowHash() 
+void SET::ShowSet() 
 {
     for (int i = 0; i < 10; i++) 
     {
@@ -63,19 +64,21 @@ void HASH::ShowHash()
 }
 int main()
 {
-    HASH hash();
+    SET set;
 
-    hash.AddInHash(27);
-    hash.AddInHash(123);
-    hash.AddInHash(87);
-    hash.AddInHash(111);
-    hash.ShowHash();
+    set.AddInSet(27);
+    set.AddInSet(123);
+    set.AddInSet(87);
+    set.AddInSet(111);
+    set.ShowSet();
+    
+    cout << "-------------------" << '\n';
 
-    bool t = hash.Search(87);
+    bool t = set.Search(87);
     cout << t << '\n' << "------------------" << '\n';
 
-    bool f = hash.Search(128);
-    cout << f << 'n' << "--------------" << '\n';
+    bool f = set.Search(128);
+    cout << f << '\n' << "--------------" << '\n';
 
 
     return 0;
