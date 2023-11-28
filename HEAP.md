@@ -1,5 +1,6 @@
-// 
-//сделать класс кучи (HEAP) и методы, в том числе метод добавления элемента в соответствии со свойствами кучи.
+//Функция как можно удалить произвольный элемент из кучи с сохранением свойства кучи.
+//Вывести дерево из массива. 
+
 
 #include <iostream>
 using namespace std;
@@ -13,6 +14,7 @@ public:
     void OutHeap();
     void push_number(int num);
     int pop_back();
+    int* MakeHeap(int *b);
     ~HEAP();
 };
 
@@ -21,10 +23,7 @@ HEAP::HEAP(int _n, int* b)
     n = _n;
     tree = new int[10*n];
 
-    for (int i = 0; i < n; i++)
-    {
-        tree[i] = b[i];
-    }
+    tree = MakeHeap(b);
 }
 
 void HEAP::OutHeap()
@@ -67,6 +66,24 @@ int HEAP::pop_back()
     return k;
 }
 
+int* HEAP::MakeHeap(int *b)
+{
+    int i = n - 1;
+    int ind = (i - 1) / 2;
+    while (ind >= 0 && i > 0)
+    {
+        if (b[i] < b[ind])
+        {
+            int temp = b[i];
+            b[i] = b[ind];
+            b[ind] = temp;
+        }
+        i = ind;
+        ind = (i - 1) / 2;
+    }
+    return b;
+}
+
 int main()
 {
     int* b;
@@ -98,5 +115,4 @@ int main()
     return 0;
 }
 
-
-
+// доработать
